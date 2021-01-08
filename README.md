@@ -28,3 +28,35 @@ TensorFlow 는 Python 의 기존 라이브러리 였으나 , 사용방법이 거
 3. 직접 제작하는 것
 
 위 사진은 해당 내용을 담아낸 사진이다.
+
+## 기존 모델 사용하기
+
+<a href="https://www.tensorflow.org/js">공식 홈페이지</a> 에 들어가서 기존 모델 코드를 받아올 수 있는데,
+해당 프로젝트에서는 이미지 모델을 사용해 볼 것이다.
+
+<img src="./Machine_SelImg.png" />
+
+```html
+<!-- TensorFlow JS 를 불러온다. -->
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.0.1"> </script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet@1.0.0"> </script>
+<!-- img 태그를 만든다 해당 사진은 CORS 정책에 막히지 않게 해주어야 함 -->
+<img id="img" src="cat.jpg"></img>
+<script>
+  const img = document.getElementById('img');
+  // 모델을 불러온다.
+  mobilenet.load().then(model => {
+    // 불러온 모델에서 img 태그 사진을 검사한다
+    model.classify(img).then(predictions => {
+      console.log('Predictions: ');
+      console.log(predictions);
+    });
+  });
+</script>
+```
+
+실행 결과는
+
+<img src="./Machine_Result.png" />
+
+위와 같이 결과에 대해 몇% 정도 닮아있는지 또한 출력된다.
