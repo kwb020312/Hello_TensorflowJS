@@ -73,4 +73,16 @@ yarn
 
 ```javascript
 yarn add @tensorflow/tfjs
+
+ /test.js
+
+const tf = require('@tensorflow/tfjs');
 ```
+
+```javascript
+console.log(tf)
+```
+
+시 아래와 같은 화면이 출력되면 된다.
+
+<img src="./log_tf" />
