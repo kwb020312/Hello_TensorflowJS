@@ -85,4 +85,4 @@ console.log(tf)
 
 시 아래와 같은 화면이 출력되면 된다.
 
-<img src="./log_tf" />
+<img src="./log_tf.PNG" />
