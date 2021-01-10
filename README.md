@@ -60,3 +60,17 @@ TensorFlow 는 Python 의 기존 라이브러리 였으나 , 사용방법이 거
 <img src="./Machine_Result.png" />
 
 위와 같이 결과에 대해 몇% 정도 닮아있는지 또한 출력된다.
+
+## TensorflowJS 설치
+
+cdn
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
+```
+
+yarn
+
+```javascript
+yarn add @tensorflow/tfjs
+```
