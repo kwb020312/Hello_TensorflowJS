@@ -86,3 +86,15 @@ console.log(tf)
 시 아래와 같은 화면이 출력되면 된다.
 
 <img src="./log_tf.PNG" />
+
+## tf.tensor
+
+Tensorflow 의 기계학습을 위해서는 데이터를 tensor 형태로 바꾸어주어야 하는데 ,
+
+```javascript
+const 온도 = [20,21,22,23];
+// tensor 의 형태로 변환된 온도 배열을 원인 변수에 삽입
+const 원인 = tf.tensor(온도);
+```
+
+위와 같이 변환하여주지 않으면 일반배열은 학습할 수 없다.
