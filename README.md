@@ -113,3 +113,15 @@ const compileParam = { optimizer: tf.train.adam() , loss: tf.losses.meanSquaredE
 model.compile(compileParam);
 // 초기 설정을 바탕으로 우리가 만들었던 모델에 적용함
 ```
+
+## 모델 입히기
+
+```javascript
+// 파라미터로 epochs 만큼 반복을하여 학습시킬 것을 정의함
+var fitParam = { epochs: 100} 
+// 학습을 시작하며 끝난 경우에는 epochs 만큼의 학습 끝에 내놓은 결론을 print 함
+model.fit(원인, 결과, fitParam).then(function (result) {
+            var 예측한결과 = model.predict(원인);
+            예측한결과.print();
+        });  
+```
