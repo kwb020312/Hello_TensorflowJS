@@ -121,7 +121,20 @@ model.compile(compileParam);
 var fitParam = { epochs: 100} 
 // 학습을 시작하며 끝난 경우에는 epochs 만큼의 학습 끝에 내놓은 결론을 print 함
 model.fit(원인, 결과, fitParam).then(function (result) {
-            var 예측한결과 = model.predict(원인);
-            예측한결과.print();
-        });  
+    var 예측한결과 = model.predict(원인);
+    예측한결과.print();
+});  
+```
+
+## 모델 사용하여 미래 예측하기
+
+```javascript
+// 다음 주 온도를 삽입
+var 다음주온도 = [15,16,17, 18, 19]
+// 기계학습이 가능하도록 tf.tensor() 변환을 해줌
+var 다음주원인 = tf.tensor(다음주온도);
+// 만들어진 model 로 결과를 변수에 대입함
+var 다음주결과 = model.predict(다음주원인);
+// 결과 화면에 출력
+다음주결과.print();
 ```
