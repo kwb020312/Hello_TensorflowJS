@@ -138,3 +138,25 @@ var 다음주결과 = model.predict(다음주원인);
 // 결과 화면에 출력
 다음주결과.print();
 ```
+
+model.fit() 에 들어갈 3개의 인자에서 마지막 세 번째 인자는 단순히 { epochs: number } 보다 다양한 옵션을 줄 수 있는데,
+
+```javascript
+var fitParam = { 
+  // 반복 횟수
+  epochs: 100,
+  // 부가 옵션
+  callbacks:{
+    // 학습이 끝났을 때
+    onEpochEnd:function(epoch, logs){
+      // epoch 는 몇 번째 시도인지 에 대한 정보 , logs 는 실패도 를 갖고있다.
+      console.log('epoch', epoch, logs)
+    }
+  }
+}
+```
+
+<img src="./failure.png" />
+
+이 값이 높다면 더 많은 학습을 해야한다는 의미이며 , 이 값이 0.1 정도의 수치로 낮아졌다면,
+더 반복한다고 하더라도 학습의 결과는 같아지므로 학습의 끝을 의미한다.
