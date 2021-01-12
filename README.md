@@ -160,3 +160,16 @@ var fitParam = {
 
 이 값이 높다면 더 많은 학습을 해야한다는 의미이며 , 이 값이 0.1 정도의 수치로 낮아졌다면,
 더 반복한다고 하더라도 학습의 결과는 같아지므로 학습의 끝을 의미한다.
+
+## 저장 및 불러오기
+
+```javascript
+// 나의 모델을 localStorage 상으로 저장하며 이름은 my-model-1 이다.
+// 즉 다른 사이트 및 브라우저를 종료했다 키더라도 정보는 남아있음.
+const saveResult = await model.save('localstorage://my-model-1');
+
+// localStorage 에서 이름이 my-model-1 인 파일을 읽어온다
+const model = await tf.loadLayersModel('localstorage://my-model-1');
+// 즉 바로 사용이 가능함
+model.predict(tf.tensor([20])).print()
+```
