@@ -98,3 +98,18 @@ const 원인 = tf.tensor(온도);
 ```
 
 위와 같이 변환하여주지 않으면 일반배열은 학습할 수 없다.
+
+## 모델 만들기
+
+```javascript
+const X = tf.input({ shape: [1] });
+// 1 개의 X축을 만듦 shape:[N]
+const Y = tf.layers.dense({ units: 1 }).apply(X);
+// 1 개의 Y 축을 만들며 이는 X 축 데이터에 적용시키는 값임 units: N
+const model = tf.model({ inputs: X , outputs: Y });
+// X 의 원인으로 Y 의 결과를 도출하는 모델을 만듦
+const compileParam = { optimizer: tf.train.adam() , loss: tf.losses.meanSquaredError }
+// 모델의 초기설정을 해줌
+model.compile(compileParam);
+// 초기 설정을 바탕으로 우리가 만들었던 모델에 적용함
+```
