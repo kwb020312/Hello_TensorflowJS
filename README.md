@@ -173,3 +173,37 @@ const model = await tf.loadLayersModel('localstorage://my-model-1');
 // 즉 바로 사용이 가능함
 model.predict(tf.tensor([20])).print()
 ```
+
+### VIS
+
+TensorflowJS 에는 화면으로 model 의 loss 값을 실시간으로 확인할 수 있게 vis 라는 시각화 도구를 제공하는데
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-vis"></script>
+```
+
+```javascript
+tfvis.show.history({name:'시각화 도구의 타이틀' , tab:'탭 도구 이름'} , 데이터 흐름을 가진 배열 객체  , ['변화를 볼 데이터 이름']);
+
+// 예전 예제에서 
+// 빈 배열 하나를 추가함
+const _history = []
+var fitParam = { 
+  // 반복 횟수
+  epochs: 100,
+  // 부가 옵션
+  callbacks:{
+    // 학습이 끝났을 때
+    onEpochEnd:function(epoch, logs){
+      // 배열에 logs 객체를 삽입함 이 때 tfvis.show.history 의 세 번째 인자의 값 은 logs.loss 값으로 동일한 이름을 사용해야함
+      _history.push(logs)
+      // epoch 는 몇 번째 시도인지 에 대한 정보 , logs 는 실패도 를 갖고있다.
+      tfvis.show.history({name:'loss' , tab:'역사'} , _history , ['loss'])
+    }
+  }
+}
+```
+
+결과 화면은 아래와 같다
+
+<img src="./history_graph.png" />
